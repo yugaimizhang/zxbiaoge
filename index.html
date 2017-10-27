@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+        }
+        tr{
+            width: 200px;
+            border: 1px solid black;
+        }
+         td{
+             width: 50px;
+             height: 20px;
+             border: 1px solid black;
+         }
+    </style>
+</head>
+<body>
+   <table>
+       <tr>
+           <td>id</td>
+           <td>name</td>
+           <td>age</td>
+       </tr>
+   </table>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+<script>
+     $(function () {
+         $.ajax({
+             url:'http://localhost:3000/',
+             type:'POST',
+             success:function (e) {
+                 console.log(e)
+                 for(var i=0;i<e.length;i++){
+                     $('table').append('<tr><td>'+e[i].id+'</td><td>'+e[i].name+'</td><td>'+e[i].age+'</td></tr>')
+                 }
+             }
+         })
+     })
+</script>
+</html>
